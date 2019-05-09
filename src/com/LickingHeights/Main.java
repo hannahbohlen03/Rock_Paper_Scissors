@@ -73,6 +73,19 @@ public class Main {
         //}
     }
 
+    public static int userNumber(String userMedium){
+        int userChoiceNumber;
+        if (userMedium.equalsIgnoreCase("rock")){
+            userChoiceNumber= 0;
+        }
+        else if (userMedium.equalsIgnoreCase("paper")){
+            userChoiceNumber=1;
+        }
+        else{
+            userChoiceNumber=2;
+        }
+        return userChoiceNumber;
+    }
 
     public static String gameChoice(int randomNumber){
 

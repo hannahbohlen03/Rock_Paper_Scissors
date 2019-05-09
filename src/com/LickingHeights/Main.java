@@ -11,13 +11,13 @@ public class Main {
         keyboard = new Scanner(System.in);
 
         boolean Restart = true;
-        boolean threeRounds = true;
+        boolean rounds = true;
 
-        String a[]=new String[3];
+        String a[] = new String[3];
         //a is the game's choice play in a numeral value
-        a[0]= "Rock";
-        a[1]= "Paper";
-        a[2]= "Scissors";
+        a[0] = "Rock";
+        a[1] = "Paper";
+        a[2] = "Scissors";
 
         int randomNumber = new Random().nextInt(a.length);
 
@@ -48,30 +48,42 @@ public class Main {
         System.out.println(" ");
         System.out.println("You are about to go up against a highly intelligent computer in a game of Rock, Paper, Scissors.");
 
-        //while (Restart){
-        System.out.println("Prepare yourself. Please choose a medium to play.");
-        System.out.println("We will play best of three rounds.");
-        System.out.println(" ");
-
-       // while (threeRounds) {
-            userMedium = keyboard.nextLine();
-            userChoiceNumber=userNumber(userMedium);
+        while (Restart) {
+            System.out.println("We will play best of three rounds.");
+            System.out.println("Prepare yourself. Please choose a medium to play.");
             System.out.println(" ");
 
-            System.out.println(userChoiceNumber); //DEBUG LINE
-            System.out.println(randomNumber); //DEBUG LINE
+            while (rounds) {
+                userMedium = keyboard.nextLine();
+                userChoiceNumber = userNumber(userMedium);
+                System.out.println(" ");
 
-            computerString = gameChoice(randomNumber);
+                // System.out.println(userChoiceNumber); //DEBUG LINE
+                // System.out.println(randomNumber); //DEBUG LINE
 
-            System.out.println(" ");
+                computerString = gameChoice(randomNumber);
+                System.out.println(" ");
+                System.out.println("I choose " + computerString + "!");
+                System.out.println(" ");
 
-            System.out.println("I choose " + computerString + "!");
 
-            System.out.println(" ");
-
-
-        //}
+            }
+        }
     }
+
+
+    public static String winOrLose(int randomNumber, int userChoiceNumber){
+
+        int WOL; //this is either "1", "2", or "3". This value will determine if the person won, lost, or tied.
+
+        if (randomNumber==2 && userChoiceNumber==0 ||
+                randomNumber==0 && userChoiceNumber==1 ||
+                    randomNumber==0 && userChoiceNumber==2){
+            WOL
+        }
+
+    }
+
 
     public static int userNumber(String userMedium){
         int userChoiceNumber;
@@ -86,19 +98,5 @@ public class Main {
         }
         return userChoiceNumber;
     }
-
-    public static String gameChoice(int randomNumber){
-
-        String computerString;
-        if (randomNumber==0){
-            computerString = "rock";
-        }
-        else if (randomNumber==1){
-            computerString = "paper";
-        }
-        else {
-            computerString = "scissors";
-        }
-        return computerString;
-    }
+    
 }

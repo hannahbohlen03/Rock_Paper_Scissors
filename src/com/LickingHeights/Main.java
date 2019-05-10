@@ -69,24 +69,27 @@ public class Main {
       //  }
     }
 
-    public static int winOrLose(int randomNumber, int userChoiceNumber){
-
-        int WOL; //this is either "1", "2", or "3". This value will determine if the person won, lost, or tied.
-
+    public static int userWins(int randomNumber, int userChoiceNumber, int userScore){
         if (randomNumber==2 && userChoiceNumber==0 ||
                 randomNumber==0 && userChoiceNumber==1 ||
                     randomNumber==0 && userChoiceNumber==2){
-            WOL = 1; //Player wins!
-        }
-        else if (randomNumber==0 && userChoiceNumber==2 ||
-                    randomNumber==1 && userChoiceNumber==0 ||
-                        randomNumber==2 && userChoiceNumber==1) {
-            WOL = 2; //Computer wins!
+            userScore+=1;
         }
         else {
-            WOL = 3; //User and computer tie
+            userScore +=0;
         }
-        return WOL;
+        return userScore;
+    }
+    public static int computerWins(int randomNumber, int userChoiceNumber, int computerScore){
+        if (randomNumber==0 && userChoiceNumber==2 ||
+                randomNumber==1 && userChoiceNumber==0 ||
+                randomNumber==2 && userChoiceNumber==1) {
+            computerScore+=1;
+        }
+        else{
+            computerScore+=0;
+        }
+        return computerScore;
     }
 
 

@@ -77,7 +77,58 @@ public class Main {
                 System.out.println("My score is now " + computerScore + ".");
                 System.out.println("Your score is now " + userScore);
 
-               
+                if (userScore > 1 || computerScore>1){
+                    if(userScore >1){
+                        System.out.println("Looks like you won... Maybe I need to revise my calculations...");
+                        System.out.println(" ");
+                        System.out.println(" _____________________________________");
+                        System.out.println("|                                     |");
+                        System.out.println("|                                     |");
+                        System.out.println("|                                     |");
+                        System.out.println("|      _______         ________       |");
+                        System.out.println("|                                     |");
+                        System.out.println("|                 <                   |");
+                        System.out.println("|                                     |");
+                        System.out.println("|                                     |");
+                        System.out.println("|                                     |");
+                        System.out.println("|           _______________           |");
+                        System.out.println("|          |               |          |");
+                        System.out.println("|                                     |");
+                        System.out.println("|                                     |");
+                        System.out.println("|_____________________________________|");
+                    }
+                    else if (computerScore> 1){
+                        System.out.println("Looks like I won! I told you I was good at this!");
+                        System.out.println(" _____________________________________");
+                        System.out.println("|                                     |");
+                        System.out.println("|                                     |");
+                        System.out.println("|                                     |");
+                        System.out.println("|      _______         ________       |");
+                        System.out.println("|                                     |");
+                        System.out.println("|                 <                   |");
+                        System.out.println("|                                     |");
+                        System.out.println("|                                     |");
+                        System.out.println("|                                     |");
+                        System.out.println("|         |_________________|         |");
+                        System.out.println("|                                     |");
+                        System.out.println("|                                     |");
+                        System.out.println("|                                     |");
+                        System.out.println("|_____________________________________|");
+                    }
+                    else{
+                        System.out.println("Hmm... looks like there was an error.");
+                    }
+                    System.out.println(" ");
+                    System.out.println("Let's play again soon!");
+                    System.out.println(" ");
+                    System.out.println(" ");
+                    System.out.println(" ");
+                    break;
+                }
+                else {
+                    System.out.println(" ");
+                    System.out.println("Keep going!");
+                }
             }
         }
     }

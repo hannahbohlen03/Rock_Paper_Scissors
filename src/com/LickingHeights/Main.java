@@ -1,5 +1,6 @@
 package com.LickingHeights;
 
+import java.sql.SQLSyntaxErrorException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -46,6 +47,7 @@ public class Main {
         while (Restart) {
             int userScore=0;
             int computerScore=0;
+
             System.out.println("We will play best of three rounds.");
             System.out.println("Prepare yourself");
             System.out.println(" ");
@@ -69,22 +71,26 @@ public class Main {
 
                 System.out.println(" ");
 
-                System.out.println("My score is now " + computerWins(randomNumber, userChoiceNumber, computerScore)+ ".");
-                System.out.println("Your score is now " + userWins(randomNumber, userChoiceNumber, userScore));
-
                 userScore = userWins(randomNumber, userChoiceNumber, userScore);
                 computerScore = computerWins(randomNumber, userChoiceNumber, computerScore);
 
+                System.out.println("My score is now " + computerScore + ".");
+                System.out.println("Your score is now " + userScore);
 
-
+               
             }
         }
     }
 
     public static int userWins(int randomNumber, int userChoiceNumber, int userScore){
+
+        //0 = rock
+        //1 = paper
+        //2 = scissors
+
         if (randomNumber==2 && userChoiceNumber==0 ||
                 randomNumber==0 && userChoiceNumber==1 ||
-                randomNumber==0 && userChoiceNumber==2){
+                randomNumber==1 && userChoiceNumber==2){
             userScore ++;
         }
         else {
@@ -93,6 +99,11 @@ public class Main {
         return userScore;
     }
     public static int computerWins(int randomNumber, int userChoiceNumber, int computerScore){
+
+        //0 = rock
+        //1 = paper
+        //2 = scissors
+
         if (randomNumber==0 && userChoiceNumber==2 ||
                 randomNumber==1 && userChoiceNumber==0 ||
                 randomNumber==2 && userChoiceNumber==1) {

@@ -19,12 +19,7 @@ public class Main {
         a[1] = "paper";
         a[2] = "scissors";
 
-        int randomNumber = new Random().nextInt(a.length);
-
         String userMedium;
-        String computerString;
-        int userScore;
-        int computerScore;
         int userChoiceNumber;
 
         //GAME START
@@ -48,12 +43,19 @@ public class Main {
         System.out.println(" ");
         System.out.println("You are about to go up against a highly intelligent computer in a game of Rock, Paper, Scissors.");
 
-       // while (Restart) {
+        while (Restart) {
+            int userScore=0;
+            int computerScore=0;
             System.out.println("We will play best of three rounds.");
-            System.out.println("Prepare yourself. Please choose a medium to play.");
+            System.out.println("Prepare yourself");
             System.out.println(" ");
 
-            //while (rounds) {
+            while (rounds) {
+                Random r= new Random();
+                int randomNumber = r.nextInt(a.length);
+
+                System.out.println(" ");
+                System.out.println("Please make your move.");
                 userMedium = keyboard.nextLine();
                 userChoiceNumber = userNumber(userMedium);
                 System.out.println(" ");
@@ -62,18 +64,28 @@ public class Main {
 
                 System.out.println(" ");
                 System.out.println("I choose " + a[randomNumber] + "!");
+
+                //System.out.println(a[randomNumber]);
+
                 System.out.println(" ");
 
+                System.out.println("My score is now " + computerWins(randomNumber, userChoiceNumber, computerScore)+ ".");
+                System.out.println("Your score is now " + userWins(randomNumber, userChoiceNumber, userScore));
 
-           // }
-      //  }
+                userScore = userWins(randomNumber, userChoiceNumber, userScore);
+                computerScore = computerWins(randomNumber, userChoiceNumber, computerScore);
+
+
+
+            }
+        }
     }
 
     public static int userWins(int randomNumber, int userChoiceNumber, int userScore){
         if (randomNumber==2 && userChoiceNumber==0 ||
                 randomNumber==0 && userChoiceNumber==1 ||
-                    randomNumber==0 && userChoiceNumber==2){
-            userScore+=1;
+                randomNumber==0 && userChoiceNumber==2){
+            userScore ++;
         }
         else {
             userScore +=0;
@@ -84,10 +96,10 @@ public class Main {
         if (randomNumber==0 && userChoiceNumber==2 ||
                 randomNumber==1 && userChoiceNumber==0 ||
                 randomNumber==2 && userChoiceNumber==1) {
-            computerScore+=1;
+            computerScore ++;
         }
         else{
-            computerScore+=0;
+            computerScore +=0;
         }
         return computerScore;
     }
@@ -101,8 +113,11 @@ public class Main {
         else if (userMedium.equalsIgnoreCase("paper")){
             userChoiceNumber=1;
         }
-        else{
+        else if(userMedium.equalsIgnoreCase("scissors")){
             userChoiceNumber=2;
+        }
+        else{
+            userChoiceNumber=3;
         }
         return userChoiceNumber;
     }

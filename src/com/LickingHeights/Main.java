@@ -12,11 +12,11 @@ public class Main {
         boolean Restart = true;
         boolean rounds = true;
 
-        String a[] = new String[3];
+        String Cmove[] = new String[3]; //Cmove = Computer Move
         //a is the game's choice play in a numeral value
-        a[0] = "rock";
-        a[1] = "paper";
-        a[2] = "scissors";
+        Cmove[0] = "rock";
+        Cmove[1] = "paper";
+        Cmove[2] = "scissors";
 
         String userMedium;
         int userChoiceNumber;
@@ -52,8 +52,8 @@ public class Main {
             System.out.println("Please make your first move.");
 
             while (rounds) {
-                Random r = new Random();
-                int randomNumber = r.nextInt(a.length);
+                Random number = new Random();
+                int randomNumber = number.nextInt(Cmove.length);
                 userMedium = keyboard.nextLine();
                 userChoiceNumber = userNumber(userMedium);
 
@@ -63,7 +63,7 @@ public class Main {
                     System.out.println(" ");
                 }
                 // System.out.println(userChoiceNumber); //DEBUG LINE
-                System.out.println("I choose " + a[randomNumber] + "!");
+                System.out.println("I choose " + Cmove[randomNumber] + "!");
 
                 //System.out.println(a[randomNumber]); //DEBUG LINE
 
@@ -132,7 +132,7 @@ public class Main {
         }
     }
 
-    private static int userWins(int randomNumber, int userChoiceNumber, int userScore){
+    public static int userWins(int randomNumber, int userChoiceNumber, int userScore){
 
         //0 = rock
         //1 = paper
@@ -148,7 +148,7 @@ public class Main {
         }
         return userScore;
     }
-    private static int computerWins(int randomNumber, int userChoiceNumber, int computerScore){
+    public static int computerWins(int randomNumber, int userChoiceNumber, int computerScore){
 
         //0 = rock
         //1 = paper
@@ -166,7 +166,7 @@ public class Main {
     }
 
 
-    private static int userNumber(String userMedium){
+    public static int userNumber(String userMedium){
         int userChoiceNumber;
         if (userMedium.equalsIgnoreCase("rock")){
             userChoiceNumber= 0;

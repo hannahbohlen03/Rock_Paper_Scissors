@@ -1,6 +1,4 @@
 package com.LickingHeights;
-
-import java.sql.SQLSyntaxErrorException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -29,7 +27,7 @@ public class Main {
         System.out.println("|                                     |");
         System.out.println("|                                     |");
         System.out.println("|                                     |");
-        System.out.println("|      _______         ________       |");
+        System.out.println("|      _______          ________      |");
         System.out.println("|                                     |");
         System.out.println("|                 <                   |");
         System.out.println("|                                     |");
@@ -45,47 +43,49 @@ public class Main {
         System.out.println("You are about to go up against a highly intelligent computer in a game of Rock, Paper, Scissors.");
 
         while (Restart) {
-            int userScore=0;
-            int computerScore=0;
+            int userScore = 0;
+            int computerScore = 0;
 
             System.out.println("We will play best of three rounds.");
             System.out.println("Prepare yourself");
             System.out.println(" ");
+            System.out.println("Please make your first move.");
 
             while (rounds) {
-                Random r= new Random();
+                Random r = new Random();
                 int randomNumber = r.nextInt(a.length);
-
-                System.out.println(" ");
-                System.out.println("Please make your move.");
                 userMedium = keyboard.nextLine();
                 userChoiceNumber = userNumber(userMedium);
-                System.out.println(" ");
 
+                if (userChoiceNumber == 3) {
+                    System.out.println("Hmm, looks like you misspelled something. Try again.");
+                } else {
+                    System.out.println(" ");
+                }
                 // System.out.println(userChoiceNumber); //DEBUG LINE
-
-                System.out.println(" ");
                 System.out.println("I choose " + a[randomNumber] + "!");
 
-                //System.out.println(a[randomNumber]);
+                //System.out.println(a[randomNumber]); //DEBUG LINE
 
                 System.out.println(" ");
 
-                userScore = userWins(randomNumber, userChoiceNumber, userScore);
-                computerScore = computerWins(randomNumber, userChoiceNumber, computerScore);
+                userScore = userWins(randomNumber, userChoiceNumber, userScore); //DOES NOT WORK W/O THIS
+                computerScore = computerWins(randomNumber, userChoiceNumber, computerScore); //DOES NOT WORK W/O THIS
 
-                System.out.println("My score is now " + computerScore + ".");
-                System.out.println("Your score is now " + userScore);
+                System.out.println("My score is now " + computerScore + "/3.");
+                System.out.println("Your score is now " + userScore + "/3.");
+                System.out.println(" ");
 
-                if (userScore > 1 || computerScore>1){
-                    if(userScore >1){
+                if (userScore == 2 || computerScore == 2) {
+
+                    if (userScore == 2) {
                         System.out.println("Looks like you won... Maybe I need to revise my calculations...");
                         System.out.println(" ");
                         System.out.println(" _____________________________________");
                         System.out.println("|                                     |");
                         System.out.println("|                                     |");
                         System.out.println("|                                     |");
-                        System.out.println("|      _______         ________       |");
+                        System.out.println("|      _______          _______       |");
                         System.out.println("|                                     |");
                         System.out.println("|                 <                   |");
                         System.out.println("|                                     |");
@@ -96,8 +96,8 @@ public class Main {
                         System.out.println("|                                     |");
                         System.out.println("|                                     |");
                         System.out.println("|_____________________________________|");
-                    }
-                    else if (computerScore> 1){
+
+                    } else if (computerScore == 2) { //If computer gets 2/3 wins
                         System.out.println("Looks like I won! I told you I was good at this!");
                         System.out.println(" _____________________________________");
                         System.out.println("|                                     |");
@@ -114,26 +114,25 @@ public class Main {
                         System.out.println("|                                     |");
                         System.out.println("|                                     |");
                         System.out.println("|_____________________________________|");
-                    }
-                    else{
-                        System.out.println("Hmm... looks like there was an error.");
+                    } else {
+                        System.out.println("Hmm... looks like there was an error. Let's reset the game.");
+                        break;
                     }
                     System.out.println(" ");
                     System.out.println("Let's play again soon!");
-                    System.out.println(" ");
+                    System.out.println("Here, I'll even reset the whole game for you!");
                     System.out.println(" ");
                     System.out.println(" ");
                     break;
                 }
-                else {
-                    System.out.println(" ");
-                    System.out.println("Keep going!");
+                else{
+                    System.out.println("Make your next move!");
                 }
             }
         }
     }
 
-    public static int userWins(int randomNumber, int userChoiceNumber, int userScore){
+    private static int userWins(int randomNumber, int userChoiceNumber, int userScore){
 
         //0 = rock
         //1 = paper
@@ -149,7 +148,7 @@ public class Main {
         }
         return userScore;
     }
-    public static int computerWins(int randomNumber, int userChoiceNumber, int computerScore){
+    private static int computerWins(int randomNumber, int userChoiceNumber, int computerScore){
 
         //0 = rock
         //1 = paper
@@ -167,7 +166,7 @@ public class Main {
     }
 
 
-    public static int userNumber(String userMedium){
+    private static int userNumber(String userMedium){
         int userChoiceNumber;
         if (userMedium.equalsIgnoreCase("rock")){
             userChoiceNumber= 0;
@@ -183,5 +182,4 @@ public class Main {
         }
         return userChoiceNumber;
     }
-
 }
